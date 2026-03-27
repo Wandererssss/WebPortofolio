@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Sigma &mdash; Website Porto Gweh</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+      /* --- Efek Hover Portfolio Modern --- */
+      .item-wrap { overflow: hidden; position: relative; }
+      .item-wrap > span.icon-search2 { display: none !important; }
+      .portfolio-info {
+          position: absolute;
+          bottom: 0; left: 0; right: 0;
+          padding: 30px 20px 20px 20px;
+          background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0) 100%);
+          color: #fff; z-index: 5;
+          transform: translateY(100%); 
+          transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
+          opacity: 0;
+          border-bottom-left-radius: 0.25rem; border-bottom-right-radius: 0.25rem;
+      }
+      .item-wrap:hover .portfolio-info { transform: translateY(0); opacity: 1; }
+      .portfolio-info h3 { color: #ffffff !important; font-size: 1.25rem; margin-bottom: 5px; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+      .portfolio-info span { font-size: 0.85rem; color: #fab95b; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; display: block; }
+      .item-wrap img { transition: transform 0.5s ease; }
+      .item-wrap:hover img { transform: scale(1.08); }
+
+      /* --- Efek Marquee Animasi --- */
+      .marquee-wrapper {
+          background-color: #fab95b; padding: 18px 0;
+          transform: rotate(-3deg) scale(1.05);
+          box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+          display: flex; overflow: hidden; position: relative; z-index: 10; margin: 60px 0;
+      }
+      .marquee-track { display: flex; width: max-content; animation: marqueeScroll 15s linear infinite; }
+      .marquee-text { font-size: 1.5rem; font-weight: 800; color: #111111; text-transform: uppercase; white-space: nowrap; padding-right: 10px; letter-spacing: 2px; }
+      .marquee-text .star { color: #ffffff; margin: 0 20px; }
+      .marquee-wrapper:hover .marquee-track { animation-play-state: paused; cursor: default; }
+      @keyframes marqueeScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+      body.dark-mode .marquee-wrapper { background-color: #fab95b; box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+
+      /* --- Custom Scrollbar Emas --- */
+      ::-webkit-scrollbar { width: 10px; }
+      ::-webkit-scrollbar-track { background: #1a1a1a; }
+      ::-webkit-scrollbar-thumb { background: #fab95b; border-radius: 10px; }
+      ::-webkit-scrollbar-thumb:hover { background: #d99a3d; }
+
+      /* --- Tombol Back to Top --- */
+      .back-to-top {
+          position: fixed; bottom: 30px; right: 30px;
+          width: 45px; height: 45px; background: #fab95b; color: #111 !important;
+          border-radius: 50%; display: flex; align-items: center; justify-content: center;
+          font-size: 20px; font-weight: bold; z-index: 999;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.3); opacity: 0; visibility: hidden;
+          transition: all 0.3s ease; text-decoration: none;
+      }
+      .back-to-top.show { opacity: 1; visibility: visible; }
+      .back-to-top:hover { transform: translateY(-5px); background: #fff; box-shadow: 0 8px 20px rgba(250, 185, 91, 0.5); }
+
+      /* --- Custom Cursor Bulat --- */
+      @media (min-width: 992px) {
+          body, a, button, .theme-btn { cursor: none !important; }
+          input, textarea, select { cursor: text !important; }
+          .custom-cursor {
+              position: fixed; top: 0; left: 0;
+              width: 30px; height: 30px;
+              border: 2px solid #fab95b; border-radius: 50%;
+              pointer-events: none; z-index: 9999;
+              transform: translate(-50%, -50%);
+              transition: width 0.2s, height 0.2s, background-color 0.2s;
+          }
+          .custom-cursor.hover {
+              width: 50px; height: 50px;
+              background-color: rgba(250, 185, 91, 0.15);
+          }
+      }
+      @media (max-width: 991px) { .custom-cursor { display: none; } }
+
+      /* --- Status Badge Berkedip --- */
+      .availability-badge {
+          display: inline-flex; align-items: center;
+          background: rgba(255,255,255,0.1); padding: 8px 20px;
+          border-radius: 50px; font-size: 0.9rem; font-weight: 600; color: #fff;
+          margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.2);
+          backdrop-filter: blur(5px);
+      }
+      .pulse-dot {
+          width: 10px; height: 10px; background-color: #28a745;
+          border-radius: 50%; margin-right: 12px;
+          box-shadow: 0 0 0 rgba(40, 167, 69, 0.4);
+          animation: pulse 2s infinite;
+      }
+      @keyframes pulse {
+          0% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7); }
+          70% { box-shadow: 0 0 0 10px rgba(40, 167, 69, 0); }
+          100% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0); }
+      }
+
+      /* --- Mesin Ketik (Typewriter) --- */
+      .typed-text { color: #fab95b; font-weight: 700; }
+      .type-cursor { display: inline-block; width: 3px; background-color: #fab95b; margin-left: 4px; animation: blink 1s infinite; }
+      .type-cursor.typing { animation: none; }
+      @keyframes blink { 0%, 100% {opacity: 1;} 50% {opacity: 0;} }
+
+      /* --- LAYAR LOADING PRELOADER --- */
+      #preloader {
+          position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+          background-color: #111; z-index: 99999;
+          display: flex; align-items: center; justify-content: center;
+          transition: opacity 0.6s ease, visibility 0.6s ease;
+      }
+      #preloader.fade-out { opacity: 0; visibility: hidden; }
+      .loader-content { position: relative; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; }
+      .loader-text { font-size: 2rem; font-weight: 800; color: #fab95b; position: absolute; animation: pulseText 1.5s infinite ease-in-out; }
+      .loader-circle {
+          width: 100%; height: 100%; border: 3px solid transparent; border-top-color: #fab95b; border-bottom-color: #fab95b;
+          border-radius: 50%; animation: spin 1s linear infinite;
+      }
+      @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+      @keyframes pulseText { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.9); } }
+
+      /* --- EFEK TILT 3D --- */
+      .skill-card { transform-style: preserve-3d; will-change: transform; }
+      .skill-card .d-flex, .skill-card .mb-4, .skill-card .mb-2 { transform: translateZ(30px); }
+
+      /* ==================================================
+         UPDATE BARU (LEVEL UP!)
+         ================================================== */
+      
+      /* 1. Efek 3D Tabel History */
+      .table-hover tbody tr {
+          transition: all 0.3s ease;
+          border-left: 4px solid transparent;
+      }
+      .table-hover tbody tr:hover {
+          transform: scale(1.015);
+          box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+          border-left: 4px solid #fab95b;
+          background-color: #fff;
+          z-index: 10;
+          position: relative;
+      }
+      body.dark-mode .table-hover tbody tr:hover {
+          background-color: #2a2a2a !important;
+          box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+      }
+
+      /* 2. Watermark Testimonial Megah */
+      .slide-one-item .slide {
+          position: relative;
+          z-index: 1;
+      }
+      .slide-one-item .slide::after {
+          content: "\201C";
+          font-family: Georgia, serif;
+          position: absolute;
+          top: -40px;
+          left: 50%;
+          transform: translateX(-50%);
+          font-size: 15rem;
+          color: rgba(255,255,255,0.06);
+          z-index: -1;
+          line-height: 1;
+      }
+
+      /* 3. Efek Form Glow Emas & Tombol Memantul */
+      .form-control {
+          transition: all 0.3s ease;
+      }
+      .form-control:focus {
+          box-shadow: 0 0 15px rgba(250, 185, 91, 0.4) !important;
+          border-color: #fab95b !important;
+          transform: translateY(-2px);
+      }
+      body.dark-mode .form-control:focus {
+          background-color: #333 !important;
+      }
+      
+      .btn-success, .btn-dark, .btn-primary {
+          transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+      }
+      .btn-success:hover, .btn-dark:hover, .btn-primary:hover {
+          transform: translateY(-5px) scale(1.05);
+          box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+      }
+    </style>
+  </head>
+
+  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+  
+  <div id="preloader">
+      <div class="loader-content">
+          <span class="loader-text">S</span>
+          <div class="loader-circle"></div>
+      </div>
+  </div>
+
+  <div class="custom-cursor"></div>
+
+  <div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3"><span class="icon-close2 js-menu-toggle"></span></div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+   
+    <script>
+      function toggleTheme(mode) {
+        if (mode === 'dark') document.body.classList.add('dark-mode');
+        else document.body.classList.remove('dark-mode');
+      }
+    </script>
+
+    <header class="site-navbar py-4 js-sticky-header site-navbar-target" style="transform: translate-X(50px)" role="banner">
+      <div class="container-fluid">
+        <div class="row align-items-center justify-content-center">
+          <div class="">
+            <nav class="site-navigation position-relative text-right" role="navigation">
+              <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#about-section" class="nav-link">About Me</a></li>
+                <li><a href="index.html#skill-section" class="nav-link">Skill</a></li>
+              </ul>
+            </nav>
+          </div>
+
+          <div class="text-center mx-5">
+            <h1 class="m-0 site-logo"><a href="index.html">Stefanus</a></h1>
+          </div>
+
+          <div class="text-left">
+            <nav class="site-navigation position-relative" role="navigation">
+              <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                <li><a href="portofolio.html" class="nav-link">Portofolio</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                
+                <li class="ml-lg-3 d-inline-block">
+                  <div class="nav-theme-toggle d-flex align-items-center">
+                    <label class="theme-btn mb-0">
+                      <input type="radio" name="themeMode" value="light" checked onchange="toggleTheme('light')">
+                      <span class="btn-icon">☀️</span>
+                    </label>
+                    <label class="theme-btn mb-0 ml-2">
+                      <input type="radio" name="themeMode" value="dark" onchange="toggleTheme('dark')">
+                      <span class="btn-icon">🌙</span>
+                    </label>
+                  </div>
+                </li>
+              </ul>
+            </nav>
+            <div class="d-inline-block d-lg-none" style="position: relative; top: 3px;">
+              <a href="#" class="site-menu-toggle js-menu-toggle float-right"><span class="icon-menu h3"></span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="site-blocks-cover overlay bg-light" id="home-section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-12 mt-lg-5 text-left align-self-center text-intro">
+            <div class="row">
+              <div class="col-lg-8 text-center" data-aos="fade-up" data-aos-delay="200">
+                
+                <div class="availability-badge">
+                    <span class="pulse-dot"></span> Available for Freelance & Internship
+                </div>
+
+                <h1 class="text-white">Halo, Saya Stefanus Dewangga</h1>
+               
+               <p class="text-secondary h4 mt-3 mb-4" style="color: #ddd !important;">
+                   Saya seorang <span class="typed-text"></span><span class="type-cursor">&nbsp;</span>
+               </p>
+
+               <p><a href="portofolio.html" class="btn smoothscroll btn-primary">Lihat Karya Saya</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <img src="images/face-img.png" alt="Image" class="img-face">
+    </div>  
+    
+    <section class="site-section bg-light" id="about-section" style="overflow: hidden;">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-5 mb-5 mb-lg-0 about-image-column" data-aos="fade-right">
+            <div class="geometric-background-container position-relative">
+              <div class="geometric-shape circle-orange position-absolute"></div>
+              <div class="geometric-shape square-orange position-absolute"></div>
+              <div class="geometric-shape hexagon-orange position-absolute"></div>
+              <div class="profile-pic-stack position-relative d-inline-block">
+                <div class="profile-pic-circle shadow-lg tilt-element">
+                    <img src="images/face-img.png" alt="Stefanus" class="profile-img-fit"> 
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-7 ml-auto" data-aos="fade-left">
+            <div class="about-content-card p-4 p-md-5 rounded shadow-lg">
+                <h2 class="h6 text-primary mb-1 font-weight-bold">Hi, I'm</h2>
+                <h1 class="display-4 mb-2 font-weight-bold text-black">Stefanus</h1>
+                <p class="text-muted mb-4 font-italic">Mahasiswa Software Engineering & UI/UX Designer</p>
+                <div class="description-text mb-4">
+                  <p class="lead text-dark">Membangun arsitektur sistem efisien di balik layar dan merancang antarmuka pengguna yang intuitif.</p>
+                  <p>Saya berfokus pada pengembangan logika algoritma yang kuat menggunakan bahasa pemrograman C, sekaligus merancang pengalaman pengguna yang nyaman melalui proses desain yang terukur.</p>
+                </div>
+                <h4 class="h6 font-weight-bold text-black mb-3 text-uppercase" style="letter-spacing: 1px;">Expertise & Skills</h4>
+                <div class="skill-pills-container d-flex flex-wrap">
+                    <span class="custom-pill">C Programming</span>
+                    <span class="custom-pill">SQL Mastery</span>
+                    <span class="custom-pill">UI/UX Design</span>
+                    <span class="custom-pill">System Analysis</span>
+                    <span class="custom-pill">Computer Organization</span>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="site-section bg-light" id="skill-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-12 text-center" data-aos="fade-up">
+            <h2 class="section-title text-center mb-3">My Expertise</h2>
+            <p class="text-muted">Kombinasi kemampuan teknis sistem dan perancangan antarmuka.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 mb-4" data-aos="zoom-in" data-aos-delay="100">
+            <div class="skill-card p-4 rounded bg-white shadow-sm border-0 tilt-element">
+              <div class="d-flex align-items-center mb-4">
+                <div class="icon-box mr-3"><span class="icon-code text-primary h4"></span></div>
+                <h3 class="h5 mb-0 font-weight-bold">Technical Development</h3>
+              </div>
+              <div class="mb-4">
+                <div class="d-flex justify-content-between mb-2">
+                  <span class="font-weight-bold">C Programming & Algorithms</span>
+                  <span class="text-primary font-weight-bold"><span class="number-counter" data-target="85">0</span>%</span>
+                </div>
+                <div class="progress progress-animated">
+                  <div class="progress-bar bg-primary" role="progressbar" style="width: 0%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+              <div class="mb-2">
+                <div class="d-flex justify-content-between mb-2">
+                  <span class="font-weight-bold">SQL & Database (ERD/PDM)</span>
+                  <span class="text-primary font-weight-bold"><span class="number-counter" data-target="80">0</span>%</span>
+                </div>
+                <div class="progress progress-animated">
+                  <div class="progress-bar bg-primary" role="progressbar" style="width: 0%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 mb-4" data-aos="zoom-in" data-aos-delay="200">
+            <div class="skill-card p-4 rounded bg-white shadow-sm border-0 tilt-element">
+              <div class="d-flex align-items-center mb-4">
+                <div class="icon-box mr-3"><span class="icon-layers text-primary h4"></span></div>
+                <h3 class="h5 mb-0 font-weight-bold">Design & Analysis</h3>
+              </div>
+              <div class="mb-4">
+                <div class="d-flex justify-content-between mb-2">
+                  <span class="font-weight-bold">UI/UX Prototyping (Figma)</span>
+                  <span class="text-primary font-weight-bold"><span class="number-counter" data-target="75">0</span>%</span>
+                </div>
+                <div class="progress progress-animated">
+                  <div class="progress-bar bg-primary" role="progressbar" style="width: 0%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+              <div class="mb-2">
+                <div class="d-flex justify-content-between mb-2">
+                  <span class="font-weight-bold">System Flow (DFD/Flowmap)</span>
+                  <span class="text-primary font-weight-bold"><span class="number-counter" data-target="80">0</span>%</span>
+                </div>
+                <div class="progress progress-animated">
+                  <div class="progress-bar bg-primary" role="progressbar" style="width: 0%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="animated-divider-section" style="overflow: hidden; background: transparent;">
+      <div class="marquee-wrapper">
+        <div class="marquee-track">
+          <div class="marquee-text">
+            C PROGRAMMING <span class="star">✦</span> UI/UX DESIGN <span class="star">✦</span> SYSTEM ANALYSIS <span class="star">✦</span> SQL DATABASE <span class="star">✦</span> FIGMA <span class="star">✦</span> SOFTWARE ENGINEERING <span class="star">✦</span>
+          </div>
+          <div class="marquee-text">
+            C PROGRAMMING <span class="star">✦</span> UI/UX DESIGN <span class="star">✦</span> SYSTEM ANALYSIS <span class="star">✦</span> SQL DATABASE <span class="star">✦</span> FIGMA <span class="star">✦</span> SOFTWARE ENGINEERING <span class="star">✦</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-section bg-light footer">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-3">
+            <h3 class="footer-title">Stefanus</h3>
+            <p>Mahasiswa Software Engineering yang antusias dalam menciptakan solusi digital yang efisien dan antarmuka yang intuitif.</p>
+            <p><span class="d-inline-block d-md-block">Jawa Barat,</span> Indonesia</p>
+          </div>
+          
+          <div class="col-md-5 mx-auto">
+            <div class="row">
+              <div class="col-lg-4">
+                <h3 class="footer-title">Expertise</h3>
+                <ul class="list-unstyled">
+                  <li><a href="index.html#skill-section">Software Dev</a></li>
+                  <li><a href="index.html#skill-section">UI/UX Design</a></li>
+                  <li><a href="index.html#skill-section">System Analysis</a></li>
+                </ul>
+              </div>
+              <div class="col-lg-4">
+                <h3 class="footer-title">Tech Stack</h3>
+                <ul class="list-unstyled">
+                  <li><a href="#">C Language</a></li>
+                  <li><a href="#">Figma</a></li>
+                  <li><a href="#">SQL Database</a></li>
+                </ul>
+              </div>
+              <div class="col-lg-4">
+                <h3 class="footer-title">Quick Links</h3>
+                <ul class="list-unstyled">
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="index.html#about-section">About Me</a></li>
+                  <li><a href="portofolio.html">Portfolio</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-3">
+            <h3 class="footer-title">Let's Connect</h3>
+            <a href="https://github.com/Wandererssss" target="_blank" class="social-circle p-2"><span class="icon-github"></span></a>
+            <a href="https://id.linkedin.com/in/stefanus-dewangga-36ab393b6" target="_blank" class="social-circle p-2"><span class="icon-linkedin"></span></a>
+            <a href="https://www.instagram.com/stefanus1882?igsh=MXBmaGdjYWJkN296eQ==" target="_blank" class="social-circle p-2"><span class="icon-instagram"></span></a>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12 text-center">
+            <p>Copyright &copy;
+            <script>document.write(new Date().getFullYear());</script> All rights reserved | Developed by <strong>Stefanus</strong>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    <a href="#home-section" class="back-to-top smoothscroll" id="backToTopBtn">
+      <span class="icon-arrow-up"></span>
+    </a>
+  </div> 
+
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.fancybox.min.js"></script>
+  <script src="js/jquery.sticky.js"></script>
+  <script src="js/main.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+  
+  <script>
+  /* --- 1. SCRIPT PRELOADER --- */
+  window.addEventListener('load', function() {
+      setTimeout(function() {
+          document.getElementById('preloader').classList.add('fade-out');
+      }, 1000); 
+  });
+
+  /* --- 2. SCRIPT 3D TILT --- */
+  VanillaTilt.init(document.querySelectorAll(".tilt-element"), {
+      max: 12,          
+      speed: 400,       
+      glare: true,      
+      "max-glare": 0.2, 
+  });
+
+  /* --- 3. SCRIPT ANIMASI SKILL BAR --- */
+  const animateSkills = () => {
+    const counters = document.querySelectorAll('.number-counter');
+    const bars = document.querySelectorAll('.progress-bar');
+    
+    counters.forEach(counter => {
+      const target = +counter.getAttribute('data-target');
+      const speed = 2000; 
+      const updateCount = () => {
+        const count = +counter.innerText;
+        const inc = target / (speed / 16); 
+        if (count < target) {
+          counter.innerText = Math.ceil(count + inc);
+          setTimeout(updateCount, 16);
+        } else {
+          counter.innerText = target;
+        }
+      };
+      updateCount();
+    });
+
+    bars.forEach(bar => {
+      const value = bar.getAttribute('aria-valuenow');
+      bar.style.width = value + '%';
+      bar.style.transition = 'width 2s ease-in-out'; 
+    });
+  };
+
+  const skillSection = document.querySelector('#skill-section');
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      animateSkills();
+      observer.unobserve(skillSection); 
+    }
+  }, { threshold: 0.5 }); 
+  observer.observe(skillSection);
+
+  /* --- 4. SCRIPT BACK TO TOP --- */
+  window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTopBtn');
+    if (window.scrollY > 500) { 
+      btn.classList.add('show');
+    } else {
+      btn.classList.remove('show');
+    }
+  });
+
+  /* --- 5. SCRIPT CUSTOM CURSOR --- */
+  const cursor = document.querySelector('.custom-cursor');
+  document.addEventListener('mousemove', e => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+  });
+  const hoverElements = document.querySelectorAll('a, button, .theme-btn, input, textarea');
+  hoverElements.forEach(el => {
+      el.addEventListener('mouseover', () => cursor.classList.add('hover'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+  });
+
+  /* --- 6. SCRIPT TYPEWRITER --- */
+  const typedTextSpan = document.querySelector(".typed-text");
+  const cursorSpan = document.querySelector(".type-cursor");
+  const textArray = ["Software Engineer.", "UI/UX Designer.", "C Programmer.", "System Analyst."];
+  const typingDelay = 100;
+  const erasingDelay = 50;
+  const newTextDelay = 2000; 
+  let textArrayIndex = 0;
+  let charIndex = 0;
+
+  function type() {
+    if (charIndex < textArray[textArrayIndex].length) {
+      if(!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
+      typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+      charIndex++;
+      setTimeout(type, typingDelay);
+    } else {
+      cursorSpan.classList.remove("typing");
+      setTimeout(erase, newTextDelay);
+    }
+  }
+
+  function erase() {
+    if (charIndex > 0) {
+      if(!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
+      typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex-1);
+      charIndex--;
+      setTimeout(erase, erasingDelay);
+    } else {
+      cursorSpan.classList.remove("typing");
+      textArrayIndex++;
+      if(textArrayIndex >= textArray.length) textArrayIndex = 0;
+      setTimeout(type, typingDelay + 1100);
+    }
+  }
+  document.addEventListener("DOMContentLoaded", function() { 
+    if(textArray.length) setTimeout(type, newTextDelay + 250);
+  });
+  </script>
+  </body>
+</html>

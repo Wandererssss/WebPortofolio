@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Contact &mdash; Stefanus</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+      /* --- Efek Marquee Animasi --- */
+      .marquee-wrapper {
+          background-color: #fab95b; padding: 18px 0;
+          transform: rotate(-3deg) scale(1.05);
+          box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+          display: flex; overflow: hidden; position: relative; z-index: 10; margin: 60px 0;
+      }
+      .marquee-track { display: flex; width: max-content; animation: marqueeScroll 15s linear infinite; }
+      .marquee-text { font-size: 1.5rem; font-weight: 800; color: #111111; text-transform: uppercase; white-space: nowrap; padding-right: 10px; letter-spacing: 2px; }
+      .marquee-text .star { color: #ffffff; margin: 0 20px; }
+      .marquee-wrapper:hover .marquee-track { animation-play-state: paused; cursor: default; }
+      @keyframes marqueeScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+      body.dark-mode .marquee-wrapper { background-color: #fab95b; box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+
+      /* --- Custom Scrollbar Emas --- */
+      ::-webkit-scrollbar { width: 10px; }
+      ::-webkit-scrollbar-track { background: #1a1a1a; }
+      ::-webkit-scrollbar-thumb { background: #fab95b; border-radius: 10px; }
+      ::-webkit-scrollbar-thumb:hover { background: #d99a3d; }
+
+      /* --- Tombol Back to Top --- */
+      .back-to-top {
+          position: fixed; bottom: 30px; right: 30px;
+          width: 45px; height: 45px; background: #fab95b; color: #111 !important;
+          border-radius: 50%; display: flex; align-items: center; justify-content: center;
+          font-size: 20px; font-weight: bold; z-index: 999;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.3); opacity: 0; visibility: hidden;
+          transition: all 0.3s ease; text-decoration: none;
+      }
+      .back-to-top.show { opacity: 1; visibility: visible; }
+      .back-to-top:hover { transform: translateY(-5px); background: #fff; box-shadow: 0 8px 20px rgba(250, 185, 91, 0.5); }
+
+      /* --- Custom Cursor Bulat --- */
+      @media (min-width: 992px) {
+          body, a, button, .theme-btn { cursor: none !important; }
+          input, textarea, select { cursor: text !important; }
+          .custom-cursor {
+              position: fixed; top: 0; left: 0;
+              width: 30px; height: 30px;
+              border: 2px solid #fab95b; border-radius: 50%;
+              pointer-events: none; z-index: 9999;
+              transform: translate(-50%, -50%);
+              transition: width 0.2s, height 0.2s, background-color 0.2s;
+          }
+          .custom-cursor.hover {
+              width: 50px; height: 50px;
+              background-color: rgba(250, 185, 91, 0.15);
+          }
+      }
+      @media (max-width: 991px) { .custom-cursor { display: none; } }
+
+      /* --- LAYAR LOADING PRELOADER --- */
+      #preloader {
+          position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+          background-color: #111; z-index: 99999;
+          display: flex; align-items: center; justify-content: center;
+          transition: opacity 0.6s ease, visibility 0.6s ease;
+      }
+      #preloader.fade-out { opacity: 0; visibility: hidden; }
+      .loader-content { position: relative; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; }
+      .loader-text { font-size: 2rem; font-weight: 800; color: #fab95b; position: absolute; animation: pulseText 1.5s infinite ease-in-out; }
+      .loader-circle {
+          width: 100%; height: 100%; border: 3px solid transparent; border-top-color: #fab95b; border-bottom-color: #fab95b;
+          border-radius: 50%; animation: spin 1s linear infinite;
+      }
+      @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+      @keyframes pulseText { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.9); } }
+
+      /* 3. Efek Form Glow Emas & Tombol Memantul */
+      .form-control {
+          transition: all 0.3s ease;
+      }
+      .form-control:focus {
+          box-shadow: 0 0 15px rgba(250, 185, 91, 0.4) !important;
+          border-color: #fab95b !important;
+          transform: translateY(-2px);
+      }
+      body.dark-mode .form-control:focus {
+          background-color: #333 !important;
+      }
+      
+      .btn-success, .btn-dark, .btn-primary {
+          transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+      }
+      .btn-success:hover, .btn-dark:hover, .btn-primary:hover {
+          transform: translateY(-5px) scale(1.05);
+          box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+      }
+    </style>
+  </head>
+
+  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+  
+  <div id="preloader">
+      <div class="loader-content">
+          <span class="loader-text">S</span>
+          <div class="loader-circle"></div>
+      </div>
+  </div>
+
+  <div class="custom-cursor"></div>
+
+  <div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3"><span class="icon-close2 js-menu-toggle"></span></div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+   
+    <script>
+      function toggleTheme(mode) {
+        if (mode === 'dark') document.body.classList.add('dark-mode');
+        else document.body.classList.remove('dark-mode');
+      }
+    </script>
+
+    <header class="site-navbar py-4 js-sticky-header site-navbar-target" style="transform: translate-X(50px)" role="banner">
+      <div class="container-fluid">
+        <div class="row align-items-center justify-content-center">
+          <div class="">
+            <nav class="site-navigation position-relative text-right" role="navigation">
+              <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#about-section" class="nav-link">About Me</a></li>
+                <li><a href="index.html#skill-section" class="nav-link">Skill</a></li>
+              </ul>
+            </nav>
+          </div>
+
+          <div class="text-center mx-5">
+            <h1 class="m-0 site-logo"><a href="index.html">Stefanus</a></h1>
+          </div>
+
+          <div class="text-left">
+            <nav class="site-navigation position-relative" role="navigation">
+              <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                <li><a href="portofolio.html" class="nav-link">Portofolio</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                
+                <li class="ml-lg-3 d-inline-block">
+                  <div class="nav-theme-toggle d-flex align-items-center">
+                    <label class="theme-btn mb-0">
+                      <input type="radio" name="themeMode" value="light" checked onchange="toggleTheme('light')">
+                      <span class="btn-icon">☀️</span>
+                    </label>
+                    <label class="theme-btn mb-0 ml-2">
+                      <input type="radio" name="themeMode" value="dark" onchange="toggleTheme('dark')">
+                      <span class="btn-icon">🌙</span>
+                    </label>
+                  </div>
+                </li>
+              </ul>
+            </nav>
+            <div class="d-inline-block d-lg-none" style="position: relative; top: 3px;">
+              <a href="#" class="site-menu-toggle js-menu-toggle float-right"><span class="icon-menu h3"></span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="site-section bg-primary" id="contact-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 mb-5 position-relative">
+            <h2 class="section-title text-center text-white mb-5">Say Hello</h2>
+          </div>
+        </div>
+        
+        <form id="contactForm" class="p-5 bg-white shadow-lg rounded">
+          <div class="row mb-4">
+            <div class="form-group col-md-6">
+              <label for="fname" class="text-black font-weight-bold">Nama Lengkap</label>
+              <input type="text" id="fname" name="Nama" class="form-control" placeholder="Contoh: Stefanus" required>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="email" class="text-black font-weight-bold">Email</label>
+              <input type="email" id="email" name="Email" class="form-control" placeholder="email@contoh.com" required>
+            </div>
+          </div>
+
+          <div class="row mb-4">
+            <div class="form-group col-12">
+              <label for="subject" class="text-black font-weight-bold">Tujuan Pesan</label>
+              <select id="subject" name="Tujuan" class="form-control" style="background: #fff !important; color: #495057 !important;" required>
+                <option value="">-- Pilih Tujuan --</option>
+                <option value="Kerjasama Proyek">Kerjasama Proyek</option>
+                <option value="Penawaran Kerja">Penawaran Kerja</option>
+                <option value="Tanya Seputar Portofolio">Tanya Seputar Portofolio</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row mb-4">
+            <div class="form-group col-12">
+              <label class="text-black font-weight-bold d-block">Anda menghubungi sebagai:</label>
+              <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="role1" name="Hubungan" value="Personal" class="custom-control-input" required>
+                <label class="custom-control-label text-secondary" for="role1">Personal</label>
+              </div>
+              <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="role2" name="Hubungan" value="Perusahaan/Recruiter" class="custom-control-input">
+                <label class="custom-control-label text-secondary" for="role2">Perusahaan/Recruiter</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-4">
+            <div class="form-group col-12">
+              <label class="text-black font-weight-bold d-block">Layanan yang diminati:</label>
+              <div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" id="service1" name="Layanan" value="C Development" class="custom-control-input">
+                <label class="custom-control-label text-secondary" for="service1">C Development</label>
+              </div>
+              <div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" id="service2" name="Layanan" value="UI/UX Design" class="custom-control-input">
+                <label class="custom-control-label text-secondary" for="service2">UI/UX Design</label>
+              </div>
+              <div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" id="service3" name="Layanan" value="Database Design" class="custom-control-input">
+                <label class="custom-control-label text-secondary" for="service3">Database Design</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-4">
+            <div class="form-group col-12">
+              <label for="message" class="text-black font-weight-bold">Pesan</label>
+              <textarea name="Pesan" id="message" cols="30" rows="5" class="form-control" placeholder="Tulis pesanmu di sini.." required></textarea>
+            </div>
+          </div>
+
+          <div class="row mt-4">
+            <div class="col-md-12">
+              <button type="submit" onclick="window.submitType='wa'" class="btn btn-success px-4 mr-2 mb-2 d-inline-flex align-items-center">
+                <span class="icon-whatsapp mr-2"></span> Kirim via WhatsApp
+              </button>
+              <button type="submit" onclick="window.submitType='email'" class="btn btn-dark px-4 mb-2 d-inline-flex align-items-center">
+                <span class="icon-envelope mr-2"></span> Kirim via Email
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <div class="animated-divider-section" style="overflow: hidden; background: transparent;">
+      <div class="marquee-wrapper">
+        <div class="marquee-track">
+          <div class="marquee-text">
+            C PROGRAMMING <span class="star">✦</span> UI/UX DESIGN <span class="star">✦</span> SYSTEM ANALYSIS <span class="star">✦</span> SQL DATABASE <span class="star">✦</span> FIGMA <span class="star">✦</span> SOFTWARE ENGINEERING <span class="star">✦</span>
+          </div>
+          <div class="marquee-text">
+            C PROGRAMMING <span class="star">✦</span> UI/UX DESIGN <span class="star">✦</span> SYSTEM ANALYSIS <span class="star">✦</span> SQL DATABASE <span class="star">✦</span> FIGMA <span class="star">✦</span> SOFTWARE ENGINEERING <span class="star">✦</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-section bg-light footer">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-3">
+            <h3 class="footer-title">Stefanus</h3>
+            <p>Mahasiswa Software Engineering yang antusias dalam menciptakan solusi digital yang efisien dan antarmuka yang intuitif.</p>
+            <p><span class="d-inline-block d-md-block">Jawa Barat,</span> Indonesia</p>
+          </div>
+          
+          <div class="col-md-5 mx-auto">
+            <div class="row">
+              <div class="col-lg-4">
+                <h3 class="footer-title">Expertise</h3>
+                <ul class="list-unstyled">
+                  <li><a href="index.html#skill-section">Software Dev</a></li>
+                  <li><a href="index.html#skill-section">UI/UX Design</a></li>
+                  <li><a href="index.html#skill-section">System Analysis</a></li>
+                </ul>
+              </div>
+              <div class="col-lg-4">
+                <h3 class="footer-title">Tech Stack</h3>
+                <ul class="list-unstyled">
+                  <li><a href="#">C Language</a></li>
+                  <li><a href="#">Figma</a></li>
+                  <li><a href="#">SQL Database</a></li>
+                </ul>
+              </div>
+              <div class="col-lg-4">
+                <h3 class="footer-title">Quick Links</h3>
+                <ul class="list-unstyled">
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="index.html#about-section">About Me</a></li>
+                  <li><a href="portofolio.html">Portfolio</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-3">
+            <h3 class="footer-title">Let's Connect</h3>
+            <a href="#" class="social-circle p-2"><span class="icon-github"></span></a>
+            <a href="#" class="social-circle p-2"><span class="icon-linkedin"></span></a>
+            <a href="#" class="social-circle p-2"><span class="icon-instagram"></span></a>
+            <a href="#" class="social-circle p-2"><span class="icon-dribbble"></span></a>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12 text-center">
+            <p>Copyright &copy;
+            <script>document.write(new Date().getFullYear());</script> All rights reserved | Developed by <strong>Stefanus</strong>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    <a href="#contact-section" class="back-to-top smoothscroll" id="backToTopBtn">
+      <span class="icon-arrow-up"></span>
+    </a>
+  </div> 
+
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.fancybox.min.js"></script>
+  <script src="js/jquery.sticky.js"></script>
+  <script src="js/main.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+  
+  <script>
+  /* --- 1. SCRIPT PRELOADER --- */
+  window.addEventListener('load', function() {
+      setTimeout(function() {
+          document.getElementById('preloader').classList.add('fade-out');
+      }, 1000); 
+  });
+
+  /* --- 2. SCRIPT BACK TO TOP --- */
+  window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTopBtn');
+    if (window.scrollY > 500) { 
+      btn.classList.add('show');
+    } else {
+      btn.classList.remove('show');
+    }
+  });
+
+  /* --- 3. SCRIPT CUSTOM CURSOR --- */
+  const cursor = document.querySelector('.custom-cursor');
+  document.addEventListener('mousemove', e => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+  });
+  const hoverElements = document.querySelectorAll('a, button, .theme-btn, input, textarea');
+  hoverElements.forEach(el => {
+      el.addEventListener('mouseover', () => cursor.classList.add('hover'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+  });
+
+  /* --- 4. SCRIPT FORM KONTAK WA & EMAIL --- */
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault(); 
+    const nomorWA = "+6282136001925"; 
+    const emailTujuan = "emailkamu@gmail.com"; // JANGAN LUPA GANTI INI
+    
+    const nama = document.getElementById('fname').value;
+    const email = document.getElementById('email').value;
+    const tujuan = document.getElementById('subject').value;
+    const pesan = document.getElementById('message').value;
+    
+    let hubungan = "Tidak disebutkan";
+    const hubunganEl = document.querySelector('input[name="Hubungan"]:checked');
+    if (hubunganEl) hubungan = hubunganEl.value;
+    
+    const layananPilihan = [];
+    const checkboxes = document.querySelectorAll('input[name="Layanan"]:checked');
+    checkboxes.forEach((cb) => { layananPilihan.push(cb.value); });
+    const layanan = layananPilihan.length > 0 ? layananPilihan.join(', ') : "Tidak ada";
+
+    if (window.submitType === 'wa') {
+        const teksWA = `Halo Stefanus, saya melihat portofolio Anda dan tertarik untuk menghubungi. Berikut detail pesan saya:\n\n*Nama:* ${nama}\n*Email:* ${email}\n*Tujuan:* ${tujuan}\n*Menghubungi Sebagai:* ${hubungan}\n*Layanan Diminati:* ${layanan}\n\n*Pesan:*\n"${pesan}"`;
+        window.open(`https://api.whatsapp.com/send?phone=${nomorWA}&text=${encodeURIComponent(teksWA)}`, '_blank');
+    } else if (window.submitType === 'email') {
+        const emailSubject = `Pesan Portofolio dari ${nama} - ${tujuan}`;
+        const emailBody = `Halo Stefanus,%0D%0A%0D%0ASaya melihat portofolio Anda dan tertarik untuk menghubungi. Berikut detail pesan saya:%0D%0A%0D%0A* Nama: ${nama}%0D%0A* Email Pengirim: ${email}%0D%0A* Menghubungi Sebagai: ${hubungan}%0D%0A* Layanan Diminati: ${layanan}%0D%0A%0D%0A*Pesan:*%0D%0A"${pesan}"`;
+        window.location.href = `mailto:${emailTujuan}?subject=${encodeURIComponent(emailSubject)}&body=${emailBody}`;
+    }
+  });
+  </script>
+  </body>
+</html>
