@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Contact &mdash; Stefanus</title>
+    <title>Sigma &mdash; Website Porto Gweh</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -18,20 +18,6 @@
     <link rel="stylesheet" href="css/style.css">
 
     <style>
-      /* --- Efek Marquee Animasi --- */
-      .marquee-wrapper {
-          background-color: #fab95b; padding: 18px 0;
-          transform: rotate(-3deg) scale(1.05);
-          box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-          display: flex; overflow: hidden; position: relative; z-index: 10; margin: 60px 0;
-      }
-      .marquee-track { display: flex; width: max-content; animation: marqueeScroll 15s linear infinite; }
-      .marquee-text { font-size: 1.5rem; font-weight: 800; color: #111111; text-transform: uppercase; white-space: nowrap; padding-right: 10px; letter-spacing: 2px; }
-      .marquee-text .star { color: #ffffff; margin: 0 20px; }
-      .marquee-wrapper:hover .marquee-track { animation-play-state: paused; cursor: default; }
-      @keyframes marqueeScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-      body.dark-mode .marquee-wrapper { background-color: #fab95b; box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
-
       /* --- Custom Scrollbar Emas --- */
       ::-webkit-scrollbar { width: 10px; }
       ::-webkit-scrollbar-track { background: #1a1a1a; }
@@ -106,6 +92,14 @@
           transform: translateY(-5px) scale(1.05);
           box-shadow: 0 10px 20px rgba(0,0,0,0.15);
       }
+
+      /* ==================================================
+         RESPONSIVE MOBILE FIX (BIAR RAPI DI HP)
+         ================================================== */
+      @media (max-width: 767.98px) {
+          .contact-form { padding: 25px !important; }
+          .site-section { padding-top: 4em !important; padding-bottom: 4em !important; }
+      }
     </style>
   </head>
 
@@ -128,7 +122,7 @@
       </div>
       <div class="site-mobile-menu-body"></div>
     </div>
-   
+
     <script>
       function toggleTheme(mode) {
         if (mode === 'dark') document.body.classList.add('dark-mode');
@@ -142,7 +136,7 @@
           <div class="">
             <nav class="site-navigation position-relative text-right" role="navigation">
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#home-section" class="nav-link">Home</a></li>
                 <li><a href="index.html#about-section" class="nav-link">About Me</a></li>
                 <li><a href="index.html#skill-section" class="nav-link">Skill</a></li>
               </ul>
@@ -181,7 +175,7 @@
       </div>
     </header>
 
-    <section class="site-section bg-primary" id="contact-section">
+    <section class="site-section bg-primary" id="contact-section" style="margin-top: 100px;">
       <div class="container">
         <div class="row">
           <div class="col-12 mb-5 position-relative">
@@ -189,7 +183,7 @@
           </div>
         </div>
         
-        <form id="contactForm" class="p-5 bg-white shadow-lg rounded">
+        <form id="contactForm" class="contact-form p-5 bg-white shadow-lg rounded">
           <div class="row mb-4">
             <div class="form-group col-md-6">
               <label for="fname" class="text-black font-weight-bold">Nama Lengkap</label>
@@ -266,19 +260,6 @@
       </div>
     </section>
 
-    <div class="animated-divider-section" style="overflow: hidden; background: transparent;">
-      <div class="marquee-wrapper">
-        <div class="marquee-track">
-          <div class="marquee-text">
-            C PROGRAMMING <span class="star">✦</span> UI/UX DESIGN <span class="star">✦</span> SYSTEM ANALYSIS <span class="star">✦</span> SQL DATABASE <span class="star">✦</span> FIGMA <span class="star">✦</span> SOFTWARE ENGINEERING <span class="star">✦</span>
-          </div>
-          <div class="marquee-text">
-            C PROGRAMMING <span class="star">✦</span> UI/UX DESIGN <span class="star">✦</span> SYSTEM ANALYSIS <span class="star">✦</span> SQL DATABASE <span class="star">✦</span> FIGMA <span class="star">✦</span> SOFTWARE ENGINEERING <span class="star">✦</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <footer class="site-section bg-light footer">
       <div class="container">
         <div class="row mb-5">
@@ -293,9 +274,9 @@
               <div class="col-lg-4">
                 <h3 class="footer-title">Expertise</h3>
                 <ul class="list-unstyled">
-                  <li><a href="index.html#skill-section">Software Dev</a></li>
-                  <li><a href="index.html#skill-section">UI/UX Design</a></li>
-                  <li><a href="index.html#skill-section">System Analysis</a></li>
+                  <li><a href="index.html#skill-section" class="smoothscroll">Software Dev</a></li>
+                  <li><a href="index.html#skill-section" class="smoothscroll">UI/UX Design</a></li>
+                  <li><a href="index.html#skill-section" class="smoothscroll">System Analysis</a></li>
                 </ul>
               </div>
               <div class="col-lg-4">
@@ -309,8 +290,8 @@
               <div class="col-lg-4">
                 <h3 class="footer-title">Quick Links</h3>
                 <ul class="list-unstyled">
-                  <li><a href="index.html">Home</a></li>
-                  <li><a href="index.html#about-section">About Me</a></li>
+                  <li><a href="index.html" class="smoothscroll">Home</a></li>
+                  <li><a href="index.html#about-section" class="smoothscroll">About Me</a></li>
                   <li><a href="portofolio.html">Portfolio</a></li>
                 </ul>
               </div>
@@ -319,10 +300,9 @@
           
           <div class="col-md-3">
             <h3 class="footer-title">Let's Connect</h3>
-            <a href="#" class="social-circle p-2"><span class="icon-github"></span></a>
-            <a href="#" class="social-circle p-2"><span class="icon-linkedin"></span></a>
-            <a href="#" class="social-circle p-2"><span class="icon-instagram"></span></a>
-            <a href="#" class="social-circle p-2"><span class="icon-dribbble"></span></a>
+            <a href="https://github.com/Wandererssss" target="_blank" class="social-circle p-2"><span class="icon-github"></span></a>
+            <a href="https://id.linkedin.com/in/stefanus-dewangga-36ab393b6" target="_blank" class="social-circle p-2"><span class="icon-linkedin"></span></a>
+            <a href="https://www.instagram.com/stefanus1882?igsh=MXBmaGdjYWJkN296eQ==" target="_blank" class="social-circle p-2"><span class="icon-instagram"></span></a>
           </div>
         </div>
 
@@ -351,8 +331,6 @@
   <script src="js/jquery.sticky.js"></script>
   <script src="js/main.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
-  
   <script>
   /* --- 1. SCRIPT PRELOADER --- */
   window.addEventListener('load', function() {
@@ -364,54 +342,60 @@
   /* --- 2. SCRIPT BACK TO TOP --- */
   window.addEventListener('scroll', function() {
     var btn = document.getElementById('backToTopBtn');
-    if (window.scrollY > 500) { 
-      btn.classList.add('show');
-    } else {
-      btn.classList.remove('show');
+    if (btn) {
+        if (window.scrollY > 500) { 
+          btn.classList.add('show');
+        } else {
+          btn.classList.remove('show');
+        }
     }
   });
 
   /* --- 3. SCRIPT CUSTOM CURSOR --- */
   const cursor = document.querySelector('.custom-cursor');
   document.addEventListener('mousemove', e => {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
+      if (cursor) {
+          cursor.style.left = e.clientX + 'px';
+          cursor.style.top = e.clientY + 'px';
+      }
   });
   const hoverElements = document.querySelectorAll('a, button, .theme-btn, input, textarea');
   hoverElements.forEach(el => {
-      el.addEventListener('mouseover', () => cursor.classList.add('hover'));
-      el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+      el.addEventListener('mouseover', () => { if(cursor) cursor.classList.add('hover'); });
+      el.addEventListener('mouseleave', () => { if(cursor) cursor.classList.remove('hover'); });
   });
 
   /* --- 4. SCRIPT FORM KONTAK WA & EMAIL --- */
-  document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault(); 
-    const nomorWA = "+6282136001925"; 
-    const emailTujuan = "emailkamu@gmail.com"; // JANGAN LUPA GANTI INI
-    
-    const nama = document.getElementById('fname').value;
-    const email = document.getElementById('email').value;
-    const tujuan = document.getElementById('subject').value;
-    const pesan = document.getElementById('message').value;
-    
-    let hubungan = "Tidak disebutkan";
-    const hubunganEl = document.querySelector('input[name="Hubungan"]:checked');
-    if (hubunganEl) hubungan = hubunganEl.value;
-    
-    const layananPilihan = [];
-    const checkboxes = document.querySelectorAll('input[name="Layanan"]:checked');
-    checkboxes.forEach((cb) => { layananPilihan.push(cb.value); });
-    const layanan = layananPilihan.length > 0 ? layananPilihan.join(', ') : "Tidak ada";
+  if (document.getElementById('contactForm')) {
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault(); 
+      const nomorWA = "+6282136001925"; 
+      const emailTujuan = "emailkamu@gmail.com"; 
+      
+      const nama = document.getElementById('fname').value;
+      const email = document.getElementById('email').value;
+      const tujuan = document.getElementById('subject').value;
+      const pesan = document.getElementById('message').value;
+      
+      let hubungan = "Tidak disebutkan";
+      const hubunganEl = document.querySelector('input[name="Hubungan"]:checked');
+      if (hubunganEl) hubungan = hubunganEl.value;
+      
+      const layananPilihan = [];
+      const checkboxes = document.querySelectorAll('input[name="Layanan"]:checked');
+      checkboxes.forEach((cb) => { layananPilihan.push(cb.value); });
+      const layanan = layananPilihan.length > 0 ? layananPilihan.join(', ') : "Tidak ada";
 
-    if (window.submitType === 'wa') {
-        const teksWA = `Halo Stefanus, saya melihat portofolio Anda dan tertarik untuk menghubungi. Berikut detail pesan saya:\n\n*Nama:* ${nama}\n*Email:* ${email}\n*Tujuan:* ${tujuan}\n*Menghubungi Sebagai:* ${hubungan}\n*Layanan Diminati:* ${layanan}\n\n*Pesan:*\n"${pesan}"`;
-        window.open(`https://api.whatsapp.com/send?phone=${nomorWA}&text=${encodeURIComponent(teksWA)}`, '_blank');
-    } else if (window.submitType === 'email') {
-        const emailSubject = `Pesan Portofolio dari ${nama} - ${tujuan}`;
-        const emailBody = `Halo Stefanus,%0D%0A%0D%0ASaya melihat portofolio Anda dan tertarik untuk menghubungi. Berikut detail pesan saya:%0D%0A%0D%0A* Nama: ${nama}%0D%0A* Email Pengirim: ${email}%0D%0A* Menghubungi Sebagai: ${hubungan}%0D%0A* Layanan Diminati: ${layanan}%0D%0A%0D%0A*Pesan:*%0D%0A"${pesan}"`;
-        window.location.href = `mailto:${emailTujuan}?subject=${encodeURIComponent(emailSubject)}&body=${emailBody}`;
-    }
-  });
+      if (window.submitType === 'wa') {
+          const teksWA = `Halo Stefanus, saya melihat portofolio Anda dan tertarik untuk menghubungi. Berikut detail pesan saya:\n\n*Nama:* ${nama}\n*Email:* ${email}\n*Tujuan:* ${tujuan}\n*Menghubungi Sebagai:* ${hubungan}\n*Layanan Diminati:* ${layanan}\n\n*Pesan:*\n"${pesan}"`;
+          window.open(`https://api.whatsapp.com/send?phone=${nomorWA}&text=${encodeURIComponent(teksWA)}`, '_blank');
+      } else if (window.submitType === 'email') {
+          const emailSubject = `Pesan Portofolio dari ${nama} - ${tujuan}`;
+          const emailBody = `Halo Stefanus,%0D%0A%0D%0ASaya melihat portofolio Anda dan tertarik untuk menghubungi. Berikut detail pesan saya:%0D%0A%0D%0A* Nama: ${nama}%0D%0A* Email Pengirim: ${email}%0D%0A* Menghubungi Sebagai: ${hubungan}%0D%0A* Layanan Diminati: ${layanan}%0D%0A%0D%0A*Pesan:*%0D%0A"${pesan}"`;
+          window.location.href = `mailto:${emailTujuan}?subject=${encodeURIComponent(emailSubject)}&body=${emailBody}`;
+      }
+    });
+  }
   </script>
   </body>
 </html>
