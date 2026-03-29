@@ -11,82 +11,106 @@ jQuery(document).ready(function($) {
 
 	var siteMenuClone = function() {
 
-		$('.js-clone-nav').each(function() {
-			var $this = $(this);
-			$this.clone().attr('class', 'site-nav-wrap').appendTo('.site-mobile-menu-body');
-		});
-
-
-		setTimeout(function() {
-			
-			var counter = 0;
-      $('.site-mobile-menu .has-children').each(function(){
+    $('.js-clone-nav').each(function() {
         var $this = $(this);
-        
-        $this.prepend('<span class="arrow-collapse collapsed">');
-
-        $this.find('.arrow-collapse').attr({
-          'data-toggle' : 'collapse',
-          'data-target' : '#collapseItem' + counter,
-        });
-
-        $this.find('> ul').attr({
-          'class' : 'collapse',
-          'id' : 'collapseItem' + counter,
-        });
-
-        counter++;
-
-      });
-
-    }, 1000);
-
-		$('body').on('click', '.arrow-collapse', function(e) {
-      var $this = $(this);
-      if ( $this.closest('li').find('.collapse').hasClass('show') ) {
-        $this.removeClass('active');
-      } else {
-        $this.addClass('active');
-      }
-      e.preventDefault();  
-      
+        $this.clone().attr('class', 'site-nav-wrap').appendTo('.site-mobile-menu-body');
     });
 
-		$(window).resize(function() {
-			var $this = $(this),
-				w = $this.width();
+    setTimeout(function() {
+        var counter = 0;
+        $('.site-mobile-menu .has-children').each(function(){
+            var $this = $(this);
+            
+            // Perbaikan penulisan span agar tag tertutup dengan benar
+            $this.prepend('<span class="arrow-collapse collapsed"></span>');
 
-			if ( w > 768 ) {
-				if ( $('body').hasClass('offcanvas-menu') ) {
-					$('body').removeClass('offcanvas-menu');
-				}
-			}
-		})
+            $this.find('.arrow-collapse').attr({
+                'data-toggle' : 'collapse',
+                'data-target' : '#collapseItem' + counter,
+            });
 
-		$('body').on('click', '.js-menu-toggle', function(e) {
-			var $this = $(this);
-			e.preventDefault();
+            $this.find('> ul').attr({
+                'class' : 'collapse',
+                'id' : 'collapseItem' + counter,
+            });
 
-			if ( $('body').hasClass('offcanvas-menu') ) {
-				$('body').removeClass('offcanvas-menu');
-				$this.removeClass('active');
-			} else {
-				$('body').addClass('offcanvas-menu');
-				$this.addClass('active');
-			}
-		}) 
+            counter++;
+        });
+    }, 1000);
 
-		// click outisde offcanvas
-		$(document).mouseup(function(e) {
-	    var container = $(".site-mobile-menu");
-	    if (!container.is(e.target) && container.has(e.target).length === 0) {
-	      if ( $('body').hasClass('offcanvas-menu') ) {
-					$('body').removeClass('offcanvas-menu');
-				}
-	    }
-		});
-	}; 
-	siteMenuClone();
+    $('body').on('click', '.arrow-collapse', function(e) {
+        var $this = $(this);
+        if ( $this.closest('li').find('.collapse').hasClass('show') ) {
+            $this.removeClass('active');
+        } else {
+            $this.addClass('active');
+        }
+        e.preventDefault();  
+    });
+
+    $(window).resize(function() {
+        var $this = $(this),
+            w = $this.width();
+
+        if ( w > 768 ) {
+            if ( $('body').hasClass('offcanvas-menu') ) {
+                $('body').removeClass('offcanvas-menu');
+            }
+        }
+    });
+
+    $('body').on('click', '.js-menu-toggle', function(e) {
+        var $this = $(this);
+        e.preventDefault();
+
+        if ( $('body').hasClass('offcanvas-menu') ) {
+            $('body').removeClass('offcanvas-menu');
+            $this.removeClass('active');
+        } else {
+            $('body').addClass('offcanvas-menu');
+            $this.addClass('active');
+        }
+    });
+
+    // FIX: Hapus class offcanvas saat tag <a> di dalam sidebar diklik
+    // FIX: Tutup sidebar dan paksa navigasi jalan
+    $('.site-mobile-menu').on('click', 'a', function(e) {
+        var href = $(this).attr('href');
+
+        // Kalau yang diklik itu tombol panah dropdown, biarin (jangan navigasi)
+        if ($(this).hasClass('arrow-collapse') || href === '#') {
+            return;
+        }
+
+        // Tutup sidebar
+        if ($('body').hasClass('offcanvas-menu')) {
+            $('body').removeClass('offcanvas-menu');
+            $('.js-menu-toggle').removeClass('active');
+        }
+
+        // Paksa browser pindah halaman nge-bypass blocker dari script lain
+        if (href && href !== '') {
+            window.location.href = href;
+        }
+    });
+
+    // click outside offcanvas
+    $(document).on('click', function(e) {
+        var container = $(".site-mobile-menu");
+        var toggle = $(".js-menu-toggle");
+
+        // Kalau klik di dalam menu atau tombol toggle → biarin
+        if (container.is(e.target) || container.has(e.target).length > 0) return;
+        if (toggle.is(e.target) || toggle.has(e.target).length > 0) return;
+
+        // Kalau menu lagi kebuka → tutup
+        if ($('body').hasClass('offcanvas-menu')) {
+            $('body').removeClass('offcanvas-menu');
+            toggle.removeClass('active');
+        }
+    });
+}; 
+siteMenuClone();
 
 
 	var sitePlusMinus = function() {
